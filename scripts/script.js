@@ -11,8 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(entries => {
       entries.forEach(entry => {
         let newPost = document.createElement('journal-entry');
+        //let postNum = 1;
         newPost.entry = entry;
+        //newPost.onclick = function () {
+        //  setState({name: 'Entry', post: postNum})
+        //}
+        //postNum += 1;
         document.querySelector('main').appendChild(newPost);
       });
     });
 });
+
+window.addEventListener('popstate', (event) =>{
+  history.back();
+});
+
+let settings_img = document.querySelector('img');
+settings_img.addEventListener('click', () =>{
+  setState({name: "Settings"});
+});
+
+let home = document.querySelector('');
+home.addEventListener('click', () => {
+  setState({name: "Home"});
+})
+
