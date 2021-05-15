@@ -46,10 +46,15 @@ router.setState = function(state) {
     document.getElementsByTagName('body')[0].className = '';
     document.getElementsByTagName('h1')[0].innerHTML = 'Journal Entries';
   }
-  /*
   else {
     history.pushState(state, '', '#entry' + state.post); //need to add entry number
-    document.getElementsByTagName('h1')[0].innerHTML = 'Entry ' + state.post;
+    let body = document.getElementsByTagName('body')[0];
+    body.className = 'single-entry'; 
+    document.getElementsByTagName('h1')[0].innerHTML = 'Entry ' + state.post; //need to add entry number
+
+    let newEntry = document.createElement('entry-page');
+    newEntry.entry = state.entry;
+    body.appendChild(newEntry);
+    body.removeChild(document.getElementsByTagName('entry-page')[0]);
   }
-  */
 }
