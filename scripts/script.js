@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
     .then(entries => {
+      
       let postNum = 1;
       entries.forEach(entry => {
         let newPost = document.createElement('journal-entry');
@@ -16,12 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
         newPost.onclick = function () {
          setState({name: 'Entry', post: postNum, entry: entry});
         }
-        postNum = postNum;
+        postNum = postNum + 1;
         document.querySelector('main').appendChild(newPost);
       });
     });
     setState({name: 'Home'});
 });
+
+//this.shadowroot.queryselector('journal-entry')[0];
 
 window.addEventListener('popstate', (event) =>{
   if (event.state == null) {
