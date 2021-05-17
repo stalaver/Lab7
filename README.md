@@ -9,4 +9,4 @@ Avinash Nayak
 ![Part-2b](part-2b.png "Part-2b")
 
 # Link to Repository
-[Lab 7]("https://stalaver.github.io/Lab7/")
+[Lab 7](https://stalaver.github.io/Lab7/)
