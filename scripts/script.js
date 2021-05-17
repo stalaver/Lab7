@@ -9,40 +9,41 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
     .then(entries => {
-      
-      let postNum = 1;
       entries.forEach(entry => {
         let newPost = document.createElement('journal-entry');
         newPost.entry = entry;
-        newPost.onclick = function () {
-         setState({name: 'Entry', post: postNum, entry: entry});
-        }
-        postNum = postNum + 1;
         document.querySelector('main').appendChild(newPost);
       });
     });
-    setState({name: 'Home'});
 });
 
-//this.shadowroot.queryselector('journal-entry')[0];
-
-window.addEventListener('popstate', (event) =>{
-  if (event.state == null) {
-    setState({name: "Home"});
+window.addEventListener('popstate', () =>{
+  if (history.state == null) {
+    setState({name: "Home"}, true);
   }
   else {
-    setState(event.state.name);
+    setState(history.state, true);
   }
-  //history.back();
 });
 
 let settings_img = document.querySelector('img');
 settings_img.addEventListener('click', () =>{
-  setState({name: "Settings"});
+  setState({name: "Settings"}, false);
 });
 
-let home = document.querySelector('');
-home.addEventListener('click', () => {
-  setState({name: "Home"});
+document.getElementsByTagName("h1")[0].addEventListener('click', () => {
+  router.setState({name: "Home"}, false);
 });
 
+document.addEventListener('click', function(event) {
+  let count = 0;
+  if (event.target.tagName == "JOURNAL-ENTRY") {
+    let entries = document.getElementsByTagName("JOURNAL-ENTRY");
+    for (let i = 0; i < entries.length; i++) {
+      if (entries[i] == event.target) {
+        count = i + 1;
+      }
+    }
+    setState(count, false);
+  }
+});
