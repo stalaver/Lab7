@@ -24,7 +24,6 @@ router.setState = function(state, back) {
     if (!back) {
       history.pushState(state, '', '/#entry' + state); 
     }
-    //let body = document.getElementsByTagName('body')[0];
     document.body.className = 'single-entry'; 
     document.getElementsByTagName('h1')[0].innerHTML = 'Entry ' + state; 
     document.getElementsByTagName('entry-page')[0].remove();
